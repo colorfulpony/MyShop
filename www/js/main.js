@@ -5,7 +5,6 @@
  *  @return в случае успеха обновятся данные корзины на странице
  */
 function addToCart(itemId){
-    console.log("js - addToCart()");
     $.ajax({
 		type: 'POST',
 		async: true,
@@ -32,7 +31,6 @@ function addToCart(itemId){
  * @return в случае успеха обновятся данные корзины на странице
  */
 function removeFromCart(itemId){
-    console.log("js - removeFromCart("+itemId+")");
     $.ajax({
 		type: 'POST',
 		async: true,
@@ -57,11 +55,8 @@ function removeFromCart(itemId){
  */
  function conversionPrice(itemId){
     var newCnt = $('#itemCnt_' + itemId).val();
-	console.log(newCnt);
 	var itemPrice = $('#itemPrice_' + itemId).attr('value');
-	console.log(itemPrice);
 	var itemRealPrice = newCnt * itemPrice;
-	console.log(itemRealPrice);
 	
 	$('#itemRealPrice_' + itemId).html(itemRealPrice);
 }

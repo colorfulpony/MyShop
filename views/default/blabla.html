@@ -1,55 +1,12 @@
-{* cart's shablon *}
-<h1>Cart</h1>
-
-{if ! $rsProducts}
-    Shopping Cart is empty
-    {else}
-        <h2>Cart's data</h2>
-        <table>
-            <tr>
-                <td>
-                    #
-                </td>
-                <td>
-                    Name
-                </td>
-                <td>
-                    Amount
-                </td>
-                <td>
-                    Price for one
-                </td>
-                <td>
-                    Full price
-                </td>
-                <td>
-                    Action
-                </td>
-            </tr>
-            {foreach $rsProducts as $item name=products}
-            <tr>
-                <td>
-                    {$smarty.foreach.products.iteration}
-                </td>
-                <td>
-                    <a href="/product/{$item['id']}/">{$item['name']}</a><br />
-                </td>
-                <td>
-                    <!-- <input name="itemCnt_{$item['id']}" id="itemCnt_{$item['id']}" type="text" value="1" onchange="conversionPrice({$item['id']});"> -->
-                </td>
-                <td>
-                    <span id="itemPrice_{$item['id']}" value="{$item['price']}">
-                        {$item['price']}
-                    </span>
-                </td>
-                <td>
-                    <a id="removeCart_{$item['id']}" href="#" onClick="removeFromCart({$item['id']}); return false;" alt="Remove From Shopping Cart">Remove From Shopping Cart</a>
-                    <a id="addCart_{$item['id']}" class="hideme" href="#" onClick="addToCart({$item['id']}); return false;" alt="Add to Shopping Cart">Add to Shopping Cart</a> 
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-            {/foreach}
-        </table>
-{/if}
+<div id="registerBox">
+    <div class="menuCaption showHidden" onclick="showRegisterBox();">Register</div>
+    <div id="registerBoxHidden">
+        email: <br>
+        <input type="text" name="email" id="email" value=""><br>
+        password: <br>
+        <input type="password" name="pwd1" id="pwd1" value=""><br>
+        password again: <br>
+        <input type="password" name="pwd2" id="pwd2" value=""><br>
+        <input type="button" name="button" onclick="registerNewUser();" value="Register">
+    </div>
+</div>
