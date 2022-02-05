@@ -18,7 +18,10 @@ function addToCart(itemId){
                 $('#addCart_'+ itemId).hide();
                 $('#removeCart_'+ itemId).show();
 			}
-		}
+		},
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
 	});   
 }
 
@@ -45,4 +48,20 @@ function removeFromCart(itemId){
 			}
 		}
 	});    
+}
+
+/**
+ * Full amount of the product
+ * 
+ * @param integer itemId ID продукта
+ */
+ function conversionPrice(itemId){
+    var newCnt = $('#itemCnt_' + itemId).val();
+	console.log(newCnt);
+	var itemPrice = $('#itemPrice_' + itemId).attr('value');
+	console.log(itemPrice);
+	var itemRealPrice = newCnt * itemPrice;
+	console.log(itemRealPrice);
+	
+	$('#itemRealPrice_' + itemId).html(itemRealPrice);
 }

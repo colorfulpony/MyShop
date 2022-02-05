@@ -60,3 +60,20 @@ function getProductById($itemId)
    $rs = db()->query($sql); 
    return $rs->fetch_assoc();   
 }
+
+/**
+ * Get Product list for ID's array 
+ * 
+ * @param array $itemsIds
+ * @return array product's array data
+ */
+function getProductsFromArray($itemsIds)
+{
+   $strIds = implode($itemsIds, ', ');
+   $sql = "SELECT *
+           FROM products 
+           WHERE id in ({$strIds})";
+   $rs = db()->query($sql);
+   
+   return createSmartyRsArray($rs);
+}
