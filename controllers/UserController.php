@@ -56,3 +56,24 @@ function registerAction()
     
     echo json_encode($resData);
 }
+
+/**
+ * Logout User
+ */
+function logoutAction()
+{
+    $resData = null;
+    if(isset($_SESSION['user'])){
+        unset($_SESSION['user']);
+        unset($_SESSION['cart']);
+
+        $resData['success'] = 1;
+        $resData['message'] = "You have successfully logged out";
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = "Unable to log out";
+    }
+
+    echo json_encode($resData);
+    // redirect('/');
+}

@@ -15,6 +15,12 @@
 			{/foreach}
 	</div>  
 
+	<div id="userBox" class="hideme">
+		<a href="#" id="userLink"></a><br>
+		<input type="button" onclick="logout();" value="Logout"/>
+		<a href="#" onclick="logout();">Logout</a>
+	</div>
+
 	<div id="registerBox">
 		<div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
 		<div id="registerBoxHidden">

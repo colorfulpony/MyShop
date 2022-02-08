@@ -95,8 +95,36 @@ function registerNewUser(){
                 
                 //> блок в левом столбце
                 $('#registerBox').hide();
+                
+                $('#userLink').attr('href', '/user/');
+                $('#userLink').html(data['userName']);
+                $('#userBox').show();
                 //<
+			} else {
+                alert(data['message']);
+            }
+            
+		}
+	});   
+}
 
+function logout(){  
+    var postData = getData('#registerBox');
+
+     $.ajax({
+		type: 'POST',
+		async: true,
+		url: "/user/logout/",
+        data: postData,
+		dataType: 'json',
+		success: function(data){
+			if(data['success']){
+                alert(data['message']);
+
+                window.location = '/';
+
+                $('#userBox').hide();
+                $('#registerBox').show();
 			} else {
                 alert(data['message']);
             }

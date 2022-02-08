@@ -69,9 +69,8 @@ function createSmartyRsArray($rs)
  * 
  * @param string $url адрес для перенаправления 
  */
-function redirect($url)
+function redirect($url = '/')
 {
-    if(! $url) $url = '/';
     header("Location: {$url}"); 
     exit; 
 }
