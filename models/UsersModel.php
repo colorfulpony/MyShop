@@ -20,14 +20,14 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $adress) {
 
     $sql = "INSERT INTO
             users (`email`, `pwd`, `name`, `phone`, `adress`)
-            VALUES (`{$email}`, `{$pwdMD5}`, `{$name}`, `{$phone}`, `{$phone}`";
+            VALUES ('{$email}', '{$pwdMD5}', '{$name}', '{$phone}', '{$adress}')";
 
     $rs = db()->query($sql);
 
     if($rs) {
-        $sql = "SELECT FROM users
-                WHERE (`email` = `{$email}` and `pwd` = `{$pwdMD5}`)
-                LIMIT 1";
+        $sql = "SELECT * FROM users  
+				WHERE (`email` = '{$email}' and `pwd` = '{$pwdMD5}')
+				LIMIT 1";
 
         $rs = db()->query($sql);
         $rs = createSmartyRsArray($rs);
@@ -74,6 +74,23 @@ function checkRegisterParams($email, $pwd1, $pwd2)
         $res['success'] = false;
         $res['message'] = 'Password mismatch';
     }
-
     return $res;
+    
+}
+
+/**
+ * Check email(if there is email in DB)
+ * 
+ * @param string $email
+ * @return array array - sring from table users or empty array
+ */
+function checkUserEmail($email) 
+{
+    $email = db()->real_escape_string($email);
+    $sql = "SELECT id FROM users WHERE email = '{$email}'";
+
+    $rs = db()->query($sql);
+    $rs = createSmartyRsArray($rs);
+
+    return $rs;
 }
