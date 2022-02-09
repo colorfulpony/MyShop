@@ -138,6 +138,9 @@ function logout(){
 	});   
 }
 
+/**
+ * Login User
+ */
 function login(){  
     var email = $('#loginEmail').val();
     var pwd = $('#loginPwd').val();
@@ -166,4 +169,15 @@ function login(){
             
 		}
 	});   
+}
+
+/**
+ * Show register form
+ */
+function showRegisterBox(){
+    if($("#registerBoxHidden").css('display') != "block") {
+        $("#registerBoxHidden").show();
+    } else {
+        $("#registerBoxHidden").hide();
+    }
 }

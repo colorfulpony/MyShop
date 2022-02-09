@@ -109,3 +109,27 @@ function loginAction()
     echo json_encode($resData);  
 
 }
+
+/**
+ * Show user account page
+ * 
+ * @link /user/
+ * @param object $smarty shablonizator
+ */
+function indexAction($smarty)
+{
+    // if user is not logined - redirect to main page
+    if(!isset($_SESSION['user'])) {
+        redirect();
+    }
+
+    //get category list for menu
+    $rsCategories = getAllMainCatsWithChildren();
+
+    $smarty->assign('pageTitle', 'User account');
+    $smarty->assign('rsCategories', $rsCategories);
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'user');
+    loadTemplate($smarty, 'footer');
+}

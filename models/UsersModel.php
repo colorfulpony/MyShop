@@ -115,3 +115,20 @@ function loginUser($email, $pwd)
 
     return $rs;
 }
+
+/**
+ * Change user information
+ * 
+ * @param string $name username
+ * @param string $phone user's phone
+ * @param string $adress user's adress
+ * @param string $pwd1 new user's password
+ * @param string $pwd2 new user's password again
+ * @param string $curPwd current user's password
+ * 
+ * @return boolean  TRUE if all is success
+ */
+function updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwd)
+{
+
+}
