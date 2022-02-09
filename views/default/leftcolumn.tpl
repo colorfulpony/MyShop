@@ -17,8 +17,14 @@
 
 	<div id="userBox" class="hideme">
 		<a href="#" id="userLink"></a><br>
-		<input type="button" onclick="logout();" value="Logout"/>
 		<a href="#" onclick="logout();">Logout</a>
+	</div>
+
+	<div id="loginBox">
+		<div class="menuCaption">Login</div>
+		<input type="text" name="loginEmail" id="loginEmail" value=""><br>
+		<input type="password" name="loginPwd" id="loginPwd" value=""><br>
+		<input type="button" onclick="login();" value="Sign In">
 	</div>
 
 	<div id="registerBox">

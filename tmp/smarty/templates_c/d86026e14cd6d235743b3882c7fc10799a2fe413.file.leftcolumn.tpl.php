@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-02-08 18:21:08
+<?php /* Smarty version Smarty-3.1.6, created on 2022-02-08 18:37:40
          compiled from "../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1519361fd4d3e6a7995-85674210%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd86026e14cd6d235743b3882c7fc10799a2fe413' => 
     array (
       0 => '../views/default\\leftcolumn.tpl',
-      1 => 1644340867,
+      1 => 1644341855,
       2 => 'file',
     ),
   ),
@@ -57,7 +57,6 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
 
 	<div id="userBox" class="hideme">
 		<a href="#" id="userLink"></a><br>
-		<input type="button" onclick="logout();" value="Logout"/>
 		<a href="#" onclick="logout();">Logout</a>
 	</div>
 
