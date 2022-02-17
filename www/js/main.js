@@ -142,12 +142,12 @@ function logout(){
  * Login User
  */
 function login(){  
+    // var postData = getData('#loginBox');
     var email = $('#loginEmail').val();
     var pwd = $('#loginPwd').val();
     
     var postData = "email="+ email +"&pwd=" +pwd;
     console.log(postData);
-    // var postData = getData('#loginBox');
 
      $.ajax({
 		type: 'POST',
@@ -180,4 +180,42 @@ function showRegisterBox(){
     } else {
         $("#registerBoxHidden").hide();
     }
+}
+
+function updateUserData() {
+    console.log("js - updateUserData()");
+    var phone  = $('#newPhone').val();
+    var adress = $('#newAdress').val();
+    var pwd1   = $('#newPwd1').val();
+    var pwd2   = $('#newPwd2').val();
+    var curPwd = $('#curPwd').val();
+	var name   = $('#newName').val();
+    
+	var postData = {phone: phone, 
+					adress: adress, 
+					pwd1: pwd1, 
+					pwd2: pwd2, 
+					curPwd: curPwd,
+					name: name
+    };
+
+    $.ajax({
+		type: 'POST',
+		async: false,
+		url: "/user/update/",
+        data: postData,
+		dataType: 'json',
+		success: function(data){
+			if(data['success']){
+                $('#userLink').html(data['userName']);
+                $('#curPwd').val('');
+                $('#newPwd1').val('');
+                $('#newPwd2').val('');
+				alert(data['message']);
+			} else {
+				alert(data['message']);
+            }
+		}
+    
+	}); 
 }
