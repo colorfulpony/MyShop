@@ -160,6 +160,12 @@ function login(){
                 $('#registerBox').hide();
                 $('#loginBox').hide();
 
+                $('#name').val(data['name']);
+                $('#phone').val(data['phone']);
+                $('#adress').val(data['adress']);
+
+                $('#btnSaveOrder').show();
+
                 $('#userLink').attr('href', '/user/');
                 $('#userLink').html(data['displayName']);
                 $('#userBox').show();

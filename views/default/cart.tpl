@@ -4,6 +4,7 @@
 {if ! $rsProducts}
     Shopping Cart is empty
     {else}
+    <form action="/cart/order/" method="POST">
         <h2>Cart's data</h2>
         <table>
             <tr>
@@ -62,4 +63,6 @@
             </tr>
             {/foreach}
         </table>
+    <input type="submit" value="Make order"/    >
+    </form>
 {/if}

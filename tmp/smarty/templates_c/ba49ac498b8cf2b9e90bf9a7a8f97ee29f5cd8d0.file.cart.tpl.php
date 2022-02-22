@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-02-04 19:06:27
+<?php /* Smarty version Smarty-3.1.6, created on 2022-02-17 22:24:17
          compiled from "../views/default\cart.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:540361fd62ef035ae7-29340958%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ba49ac498b8cf2b9e90bf9a7a8f97ee29f5cd8d0' => 
     array (
       0 => '../views/default\\cart.tpl',
-      1 => 1643997951,
+      1 => 1645132746,
       2 => 'file',
     ),
   ),
@@ -30,6 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if (!$_smarty_tpl->tpl_vars['rsProducts']->value){?>
     Shopping Cart is empty
     <?php }else{ ?>
+    <form action="/cart/order/" method="POST">
         <h2>Cart's data</h2>
         <table>
             <tr>
@@ -109,4 +110,6 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
             </tr>
             <?php } ?>
         </table>
+    <input type="submit" value="Make order"/    >
+    </form>
 <?php }?><?php }} ?>

@@ -23,32 +23,34 @@
 		</div>
 
 	{else}
-
+		
 		<div id="userBox" class="hideme">
 			<a href="#" id="userLink"></a><br>
 			<a href="#" onclick="logout();">Logout</a>
 		</div>
 
-		<div id="loginBox">
-			<div class="menuCaption">Login</div>
-			<input type="text" name="loginEmail" id="loginEmail" value=""><br>
-			<input type="password" name="loginPwd" id="loginPwd" value=""><br>
-			<input type="button" onclick="login();" value="Sign In">
-		</div>
-
-		<div id="registerBox">
-			<div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-			<div id="registerBoxHidden">
-				email:<br />
-				<input type="text" id="email" name="email" value=""/><br />
-				пароль: <br />
-				<input type="password" id="pwd1" name="pwd1" value=""/><br />
-				повторить пароль:<br />
-				<input type="password" id="pwd2" name="pwd2" value=""/><br />
-				<input type="button" onclick="registerNewUser();" value="Зарегистрироваться"/>
+		{if !isset($hideLoginBox) }
+			<div id="loginBox">
+				<div class="menuCaption">Login</div>
+				<input type="text" name="loginEmail" id="loginEmail" value=""><br>
+				<input type="password" name="loginPwd" id="loginPwd" value=""><br>
+				<input type="button" onclick="login();" value="Sign In">
 			</div>
-		</div>
 
+			<div id="registerBox">
+				<div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
+				<div id="registerBoxHidden">
+					email:<br />
+					<input type="text" id="email" name="email" value=""/><br />
+					пароль: <br />
+					<input type="password" id="pwd1" name="pwd1" value=""/><br />
+					повторить пароль:<br />
+					<input type="password" id="pwd2" name="pwd2" value=""/><br />
+					<input type="button" onclick="registerNewUser();" value="Зарегистрироваться"/>
+				</div>
+			</div>
+		{/if}
+		
 	{/if}
 
 	<div class="menuCaption">Корзина</div>

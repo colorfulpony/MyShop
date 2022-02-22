@@ -69,7 +69,7 @@ function getProductById($itemId)
  */
 function getProductsFromArray($itemsIds)
 {
-   $strIds = implode($itemsIds, ', ');
+   $strIds = implode($itemsIds, ", ");
    $sql = "SELECT *
            FROM products 
            WHERE id in ({$strIds})";

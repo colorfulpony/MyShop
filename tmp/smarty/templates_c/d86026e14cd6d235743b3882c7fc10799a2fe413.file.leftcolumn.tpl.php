@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-02-09 21:45:23
+<?php /* Smarty version Smarty-3.1.6, created on 2022-02-21 18:36:00
          compiled from "../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1519361fd4d3e6a7995-85674210%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd86026e14cd6d235743b3882c7fc10799a2fe413' => 
     array (
       0 => '../views/default\\leftcolumn.tpl',
-      1 => 1644439522,
+      1 => 1645464958,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'item' => 0,
     'itemChild' => 0,
     'arUser' => 0,
+    'hideLoginBox' => 0,
     'cartCntItems' => 0,
   ),
   'has_nocache_code' => false,
@@ -65,32 +66,34 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
 		</div>
 
 	<?php }else{ ?>
-
+		
 		<div id="userBox" class="hideme">
 			<a href="#" id="userLink"></a><br>
 			<a href="#" onclick="logout();">Logout</a>
 		</div>
 
-		<div id="loginBox">
-			<div class="menuCaption">Login</div>
-			<input type="text" name="loginEmail" id="loginEmail" value=""><br>
-			<input type="password" name="loginPwd" id="loginPwd" value=""><br>
-			<input type="button" onclick="login();" value="Sign In">
-		</div>
-
-		<div id="registerBox">
-			<div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-			<div id="registerBoxHidden">
-				email:<br />
-				<input type="text" id="email" name="email" value=""/><br />
-				пароль: <br />
-				<input type="password" id="pwd1" name="pwd1" value=""/><br />
-				повторить пароль:<br />
-				<input type="password" id="pwd2" name="pwd2" value=""/><br />
-				<input type="button" onclick="registerNewUser();" value="Зарегистрироваться"/>
+		<?php if (!isset($_smarty_tpl->tpl_vars['hideLoginBox']->value)){?>
+			<div id="loginBox">
+				<div class="menuCaption">Login</div>
+				<input type="text" name="loginEmail" id="loginEmail" value=""><br>
+				<input type="password" name="loginPwd" id="loginPwd" value=""><br>
+				<input type="button" onclick="login();" value="Sign In">
 			</div>
-		</div>
 
+			<div id="registerBox">
+				<div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
+				<div id="registerBoxHidden">
+					email:<br />
+					<input type="text" id="email" name="email" value=""/><br />
+					пароль: <br />
+					<input type="password" id="pwd1" name="pwd1" value=""/><br />
+					повторить пароль:<br />
+					<input type="password" id="pwd2" name="pwd2" value=""/><br />
+					<input type="button" onclick="registerNewUser();" value="Зарегистрироваться"/>
+				</div>
+			</div>
+		<?php }?>
+		
 	<?php }?>
 
 	<div class="menuCaption">Корзина</div>

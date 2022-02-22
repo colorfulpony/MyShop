@@ -77,7 +77,7 @@
             </table>
         </div>
 
-        <div class="registerBox"> or <br>
+        <div id="registerBox"> or <br>
             <div class="menuCaption">Register new user</div>
             email* : <br>
             <input type="text" name="email" id="email" value=""><br>
