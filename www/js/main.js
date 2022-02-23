@@ -102,6 +102,8 @@ function registerNewUser(){
                 $('#userBox').show();
                 
                 //<
+
+                $('#btnSaveOrder').show();
 			} else {
                 alert(data['message']);
             }
@@ -224,4 +226,30 @@ function updateUserData() {
 		}
     
 	}); 
+}
+
+/**
+ * Save Order
+ */
+
+function saveOrder()
+{
+    var postData = getData('form');
+    console.log(postData);
+
+    $.ajax({
+        type: 'POST',
+        async: true,
+        url: "/cart/saveorder/",
+        data: postData,
+        dataType: 'json',
+        success: function(data) {
+            if(data['success']) {
+                alert(data['message']);
+                document.location = '/';
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
 }

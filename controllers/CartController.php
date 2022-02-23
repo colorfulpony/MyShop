@@ -10,6 +10,8 @@
 // подключаем модели
 include_once '../models/CategoriesModel.php';
 include_once '../models/ProductsModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 
 /**
@@ -130,4 +132,31 @@ function orderAction($smarty)
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'order');
     loadTemplate($smarty, 'footer');
+}
+
+/**
+ * AJAX function save order
+ * 
+ * @param array $_SESSIO['saleCart'] array sale products
+ * @return json info about sale product
+ */
+function saveorderAction()
+{
+    //get array with order products
+    $cart = isset($_SESSION['saleCart']) ? $_SESSION['saleCart'] : null;
+
+    //if cart is empty -> make response with error -> throw it in json -> return fuctuin
+    if(!$cart) {
+        $resData['success'] = 0;
+        $resData['message'] = 'There are no products for order';
+        echo json_encode($resData);
+        return;
+    }
+
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $adress = $_POST['adress'];
+
+    $orderId = makeNewOrder($name, $phone, $adress);
+    d($orderId);
 }
