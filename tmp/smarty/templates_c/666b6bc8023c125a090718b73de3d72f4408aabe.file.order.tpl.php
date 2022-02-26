@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-02-21 18:43:10
+<?php /* Smarty version Smarty-3.1.6, created on 2022-02-23 20:58:56
          compiled from "../views/default\order.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1242620ebea8f19a12-45004350%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '666b6bc8023c125a090718b73de3d72f4408aabe' => 
     array (
       0 => '../views/default\\order.tpl',
-      1 => 1645465384,
+      1 => 1645646333,
       2 => 'file',
     ),
   ),
@@ -90,7 +90,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
     <?php if (isset($_smarty_tpl->tpl_vars['arUser']->value)){?>
         <?php $_smarty_tpl->tpl_vars['buttonClass'] = new Smarty_variable('', null, 0);?>
         <h2>Customer data</h2>
-        <div id="orederUserInfoBox" <?php echo $_smarty_tpl->tpl_vars['buttonClass']->value;?>
+        <div id="orderUserInfoBox" <?php echo $_smarty_tpl->tpl_vars['buttonClass']->value;?>
 >
             <?php $_smarty_tpl->tpl_vars['name'] = new Smarty_variable($_smarty_tpl->tpl_vars['arUser']->value['name'], null, 0);?>
             <?php $_smarty_tpl->tpl_vars['phone'] = new Smarty_variable($_smarty_tpl->tpl_vars['arUser']->value['phone'], null, 0);?>

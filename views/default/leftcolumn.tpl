@@ -18,14 +18,14 @@
 	{if isset($arUser)}
 
 		<div id="userBox">
-			<a href="#" id="userLink">{$arUser['displayName']}</a><br>
+			<a href="/user/" id="userLink">{$arUser['displayName']}</a><br>
 			<a href="#" onclick="logout();">Logout</a>
 		</div>
 
 	{else}
 		
 		<div id="userBox" class="hideme">
-			<a href="#" id="userLink"></a><br>
+			<a href="/user/" id="userLink"></a><br>
 			<a href="#" onclick="logout();">Logout</a>
 		</div>
 

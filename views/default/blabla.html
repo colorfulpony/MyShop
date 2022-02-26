@@ -1,99 +1,52 @@
-<h2>Order data</h2>
-<form id="frmOrder" action="/cart/saveorder/" method="POST">
-    <table>
+<h2>Orders:</h2>
+{if ! $rsUserOrders}
+    There is no orders
+{else}
+    <table border="1" cellpadding="1" cellspacing="1"> 
         <tr>
-            <td>№</td>
-            <td>Name</td>
-            <td>Count</td>
-            <td>Price for one</td>
-            <td>Full price</td>
+            <th>№</th>
+            <th>Action</th>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Created at</th>
+            <th>Date of payment</th>
+            <th>Other info</th>
         </tr>
-
-        {foreach $rsProducts as $item name=products}
+        {foreach $rsUserOrders as $item name=orders}
             <tr>
-                <td>{$smarty.foreach.products.iteration}</td>
-                <td><a href="/product/{$item['id']}/">{$item['name']}</a></td>
-                <td>
-                    <span id="itemCnt_{$item['id']}">
-                        <input type="hidden" name="itemCnt_{$item['id']}" value="{$item['cnt']}"/>
-                        {$item['cnt']}
-                    </span>
-                </td>
-                <td>
-                    <span id="itemPrice_{$item['id']}">
-                        <input type="hidden" name="itemPrice_{$item['id']}" value="{$item['price']}"/>
-                        {$item['price']}
-                    </span>
-                </td>
-                <td>
-                    <span id="itemRealPrice_{$item['id']}">
-                        <input type="hidden" name="itemRealPrice_{$item['id']}" value="{$item['realPrice']}"/>
-                        {$item['realPrice']}
-                    </span>
+                <td>{$smarty.foreach.orders.iteration}</td>
+                <td><a href="#" onclick="showProducts('{$item['id']}'); return false;">Show order's products</a></td>
+                <td>{$item['id']}</td>
+                <td>{$item['status']}</td>
+                <td>{$item['date_create']}</td>
+                <td>{$item['date_payment']}&nbsp;</td>
+                <td>{$item['comment']}</td>
+            </tr>
+
+            <tr class="hideme" id="purchaseForOrderId_{$item['id']}">
+                <td colspan="7">
+                    {if $item['children']}
+                        <table border="1" cellpadding="1" width="100%" sellspacing="1">
+                            <tr>
+                                <th>№</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Amount</th>
+                            </tr>
+                            {foreach $item['children'] as $itemChild name=products}
+                                <tr>
+                                    <td>{$smarty.foreach.products.iteration}</td>
+                                    <td>{$itemChild['id']}</td>
+                                    <td><a href="/product/{$itemChild['id']}/">{$itemChild['name']}</a></td>
+                                    <td>{$itemChild['price']}</td>
+                                    <td>{$itemChild['amount']}</td>
+                                </tr>
+                            {/foreach}
+                        </table>
+                    {/if}
                 </td>
             </tr>
         {/foreach}
     </table>
-
-    {if isset($arUser)}
-        {$buttonClass = ""}
-        <h2>Customer data</h2>
-        <div id="orederUserInfoBox" {$buttonClass}>
-            {$name = $arUser['name']}
-            {$phone = $arUser['phone']}
-            {$adress = $arUser['adress']}
-
-            <table>
-                <tr>
-                    <td>Name*</td>
-                    <td><input type="text" name="name" id="name" value="{$name}"></td>
-                </tr>
-                <tr>
-                    <td>Phone</td>
-                    <td><input type="text" name="phone" id="phone" value="{$phone}"></td>
-                </tr>
-                <tr>
-                    <td>Adress*</td>
-                    <td><textarea name="adress" id="adress">{$adress}</textarea></td>
-                </tr>
-            </table>
-        </div>
-    {else}
-        <div id="loginBox">
-            <div class="menuCaption">Authorization</div>
-            <table>
-                <tr>
-                    <td>Login</td>
-                    <td><input type="text" name="loginEmail" id="loginEmail" value=""></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" name="loginPwd" id="loginPwd" value=""></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="button" onclick="login();" value="Login"></td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="registerBox"> or <br>
-            <div class="menuCaption">Register new user</div>
-            email* : <br>
-            <input type="text" name="email" id="email" value=""><br>
-            password* : <br>
-            <input type="password" name="pwd1" id="pwd1" value=""><br>
-            password again* : <br>
-            <input type="password" name="pwd2" id="pwd2" value=""><br>
-
-            Name* : <input type="text" name="name" id="name" value=""><br>
-            Phone* : <input type="text" name="phone" id="phone" value=""><br>
-            Adress* : <textarea name="adress" id="adress"></textarea><br>
-            
-            <input type="button" onclick="registerNewUser();" value="Register">
-        </div>
-        {$buttonClass = "class='hideme'"}
-    {/if}
-
-    <input {$buttonClass} type="button" id="btnSaveOrder" value="Make order" onclick="saveOrder();">
-</form>
+{/if}

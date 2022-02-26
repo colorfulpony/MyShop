@@ -38,7 +38,7 @@
     {if isset($arUser)}
         {$buttonClass = ""}
         <h2>Customer data</h2>
-        <div id="orederUserInfoBox" {$buttonClass}>
+        <div id="orderUserInfoBox" {$buttonClass}>
             {$name = $arUser['name']}
             {$phone = $arUser['phone']}
             {$adress = $arUser['adress']}

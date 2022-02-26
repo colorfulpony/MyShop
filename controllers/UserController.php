@@ -5,6 +5,8 @@
 
 include_once '../models/CategoriesModel.php';
 include_once '../models/UsersModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 
 /**
@@ -126,8 +128,13 @@ function indexAction($smarty)
     //get category list for menu
     $rsCategories = getAllMainCatsWithChildren();
 
+    //get user's order list
+    $rsUserOrders = getCurUserOrders();
+    // d($rsUserOrders);
+
     $smarty->assign('pageTitle', 'User account');
     $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
 
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'user');

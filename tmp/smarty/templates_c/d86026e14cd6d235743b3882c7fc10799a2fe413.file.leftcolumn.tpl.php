@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-02-21 18:36:00
+<?php /* Smarty version Smarty-3.1.6, created on 2022-02-23 21:00:53
          compiled from "../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1519361fd4d3e6a7995-85674210%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd86026e14cd6d235743b3882c7fc10799a2fe413' => 
     array (
       0 => '../views/default\\leftcolumn.tpl',
-      1 => 1645464958,
+      1 => 1645646444,
       2 => 'file',
     ),
   ),
@@ -60,7 +60,7 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
 	<?php if (isset($_smarty_tpl->tpl_vars['arUser']->value)){?>
 
 		<div id="userBox">
-			<a href="#" id="userLink"><?php echo $_smarty_tpl->tpl_vars['arUser']->value['displayName'];?>
+			<a href="/user/" id="userLink"><?php echo $_smarty_tpl->tpl_vars['arUser']->value['displayName'];?>
 </a><br>
 			<a href="#" onclick="logout();">Logout</a>
 		</div>
@@ -68,7 +68,7 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
 	<?php }else{ ?>
 		
 		<div id="userBox" class="hideme">
-			<a href="#" id="userLink"></a><br>
+			<a href="/user/" id="userLink"></a><br>
 			<a href="#" onclick="logout();">Logout</a>
 		</div>
 

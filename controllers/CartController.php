@@ -158,5 +158,28 @@ function saveorderAction()
     $adress = $_POST['adress'];
 
     $orderId = makeNewOrder($name, $phone, $adress);
-    d($orderId);
+
+    // if order is not created - throw an error and finish function
+    if(! $orderId) {
+        $resData['success'] = 0;
+        $resData['message'] = 'Error with creating the order';
+        echo json_encode($resData);
+        return;
+    }
+
+    // save products for created order
+    $res = setPurchaseForOrder($orderId, $cart);
+
+    //if success, form request, delete cart values
+    if($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'Order is saved';
+        unset($_SESSION['saleCart']);
+        unset($_SESSION['cart']);
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Error for entering order data №3';
+    }
+
+    echo json_encode($resData);
 }
